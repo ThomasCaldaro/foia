@@ -568,7 +568,7 @@ def page_directory():
     if f_dept != "(All)": filtered = filtered[filtered["Dept Type"].str.capitalize()==f_dept]
 
     cols = [c for c in ["County","City","Dept Type","Dept Name","Contact","Title/Role","Phone","Email","Portal URL","Preferred Method","Notes","Verified","Date Verified"] if c in filtered.columns]
-    st.dataframe(filtered[cols], use_container_width=True, height=460)
+    st.dataframe(filtered[cols], width="stretch", height=460)
 
 def _run_and_render_search(addr, county_override, municipality_override, apn, project, project_type):
     if not addr.strip():
@@ -629,7 +629,7 @@ def _run_and_render_search(addr, county_override, municipality_override, apn, pr
                 continue
             show = ["County","City","Dept Type","Dept Name","Contact","Email","Portal URL","Preferred Method","Notes"]
             show = [c for c in show if c in df.columns]
-            st.dataframe(df[show], use_container_width=True)
+            st.dataframe(df[show], width="stretch")
 
             st.markdown('<div class="portalScope">', unsafe_allow_html=True)
             for url in portal_urls(df):
